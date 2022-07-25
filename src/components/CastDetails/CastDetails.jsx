@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import { getCastById } from 'services/API';
+import { getCastById } from 'services/getCastById';
 import { useParams } from 'react-router-dom';
-import lostImage from '../../images/male.jpeg';
+import lostImageMale from '../../images/male.jpeg';
+import lostImageFemale from '../../images/woman.jpg';
 
 export const CastDetails = () => {
   const { id } = useParams();
@@ -22,11 +23,12 @@ export const CastDetails = () => {
       <ul>
         {movieCast &&
           movieCast.map(
-            ({ id, name, character, profile_path, original_name }) => {
+            ({ id, name, character, profile_path, original_name, gender }) => {
               return (
                 <li key={id}>
                   <p>{name}</p>
-                  <p>Character: {character}</p>
+                  {character && <p>Character: {character}</p>}
+
                   {profile_path ? (
                     <img
                       style={{ width: '120px' }}
@@ -34,7 +36,11 @@ export const CastDetails = () => {
                       alt={original_name}
                     />
                   ) : (
-                    <img style={{ width: '120px' }} src={lostImage} alt="" />
+                    <img
+                      style={{ width: '120px' }}
+                      src={gender === 2 ? lostImageMale : lostImageFemale}
+                      alt=""
+                    />
                   )}
                 </li>
               );

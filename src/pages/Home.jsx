@@ -1,4 +1,4 @@
-import { getInfo } from 'services/API';
+import { getTrendingMovie } from '../services/getTrendingMovie';
 import { useEffect, useState } from 'react';
 import { TrendingMoviesList } from '../components/TrendingMoviesList/TrendingMovies.List';
 
@@ -7,7 +7,7 @@ export const Home = () => {
 
   useEffect(() => {
     const fetchedData = async () => {
-      const response = await getInfo();
+      const response = await getTrendingMovie();
       setState(response);
     };
 
