@@ -9,7 +9,6 @@ export const ReviewsDetails = () => {
     const fetchReview = async () => {
       const { results } = await getReviewById(id);
       setMovieReview(results);
-      console.log(results);
     };
 
     return () => fetchReview();
@@ -18,7 +17,7 @@ export const ReviewsDetails = () => {
   return (
     <div>
       <ul>
-        {movieReview &&
+        {movieReview && movieReview.length !== 0 ? (
           movieReview.map(({ author, id, content }) => {
             return (
               <li key={id}>
@@ -29,7 +28,10 @@ export const ReviewsDetails = () => {
                 <p>{content}</p>
               </li>
             );
-          })}
+          })
+        ) : (
+          <p>There is no information about this movie</p>
+        )}
       </ul>
     </div>
   );

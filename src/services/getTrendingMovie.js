@@ -5,7 +5,6 @@ export const getTrendingMovie = async () => {
     const { results } = await fetch(
       `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`
     ).then(res => {
-      if (!res.ok) throw new Error(res.status);
       return res.json();
     });
 

@@ -1,8 +1,9 @@
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, Outlet } from 'react-router-dom';
 import { getMovieById } from 'services/getMovieById';
 import { MovieDescription } from 'components/MovieDescription/MovieDescription';
 import { useEffect, useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { NavigationLinks } from 'components/NavigationLinks/NovigationLinks';
+import { BackLink } from 'components/BackLink/BackLink';
 
 export const MovieDetails = () => {
   const [movieInfo, setMovieInfo] = useState(null);
@@ -22,17 +23,9 @@ export const MovieDetails = () => {
 
   return (
     <div>
-      <Link to={backLinkHref}>Back</Link>
+      <BackLink to={backLinkHref} />
       {movieInfo && <MovieDescription info={movieInfo} />}
-
-      <ul>
-        <li>
-          <Link to="cast">Cast</Link>
-        </li>
-        <li>
-          <Link to="reviews">Reviews</Link>
-        </li>
-      </ul>
+      <NavigationLinks />
       <Outlet />
     </div>
   );

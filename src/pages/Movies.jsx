@@ -1,3 +1,9 @@
+import { SearchMovies } from 'components/SearchMovies/SearchMovies';
+
 export const Movies = () => {
-  return <div>Movies</div>;
+  return (
+    <div>
+      <SearchMovies />
+    </div>
+  );
 };
