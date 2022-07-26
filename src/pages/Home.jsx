@@ -1,6 +1,6 @@
 import { getTrendingMovie } from '../services/getTrendingMovie';
 import { useEffect, useState } from 'react';
-import { TrendingMoviesList } from '../components/TrendingMoviesList/TrendingMovies.List';
+import { MoviesList } from '../components/MoviesList/Movies.List';
 
 export const Home = () => {
   const [state, setState] = useState(null);
@@ -14,5 +14,10 @@ export const Home = () => {
     return () => fetchedData();
   }, []);
 
-  return <main>{state && <TrendingMoviesList movies={state} />}</main>;
+  return (
+    <main>
+      <h1>Trending today</h1>
+      {state && <MoviesList movies={state} />}
+    </main>
+  );
 };
