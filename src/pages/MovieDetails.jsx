@@ -4,7 +4,6 @@ import { MovieDescription } from 'components/MovieDescription/MovieDescription';
 import { useEffect, useState } from 'react';
 import { PageNavigationLinks } from 'components/PageNavigationLinks/PageNovigationLinks';
 import { BackLink } from 'components/BackLink/BackLink';
-import { Suspense } from 'react';
 import { Box } from 'components/Box/Box';
 
 const MovieDetails = () => {
@@ -22,7 +21,7 @@ const MovieDetails = () => {
       setMovieInfo(result);
     };
 
-    return () => fetchedData();
+    fetchedData();
   }, [id]);
 
   return (
@@ -32,9 +31,7 @@ const MovieDetails = () => {
       <Box pt="l" pb="l">
         <PageNavigationLinks />
       </Box>
-      <Suspense>
-        <Outlet />
-      </Suspense>
+      <Outlet />
     </Box>
   );
 };

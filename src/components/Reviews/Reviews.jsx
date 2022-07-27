@@ -11,7 +11,7 @@ const ReviewsDetails = () => {
       setMovieReview(results);
     };
 
-    return () => fetchReview();
+    fetchReview();
   }, [id]);
 
   return (

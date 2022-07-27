@@ -17,7 +17,7 @@ const CastDetails = () => {
       setMovieCast(cast);
     };
 
-    return () => castFetch();
+    castFetch();
   }, [id]);
 
   return (

@@ -12,7 +12,7 @@ const Home = () => {
       setState(response);
     };
 
-    return () => fetchedData();
+    fetchedData();
   }, []);
 
   return (
