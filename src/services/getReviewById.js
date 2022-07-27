@@ -1,9 +1,10 @@
 import { API_KEY } from 'constants/API_KEY';
+import { BASE_URL } from 'constants/BASE_URL';
 
 export const getReviewById = async id => {
   try {
     const response = fetch(
-      `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${API_KEY}&language=en-US`
+      `${BASE_URL}/movie/${id}/reviews?api_key=${API_KEY}&language=en-US`
     ).then(res => {
       return res.json();
     });

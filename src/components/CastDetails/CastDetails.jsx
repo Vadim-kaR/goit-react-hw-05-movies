@@ -3,8 +3,10 @@ import { getCastById } from 'services/getCastById';
 import { useParams } from 'react-router-dom';
 import lostImageMale from '../../images/male.jpeg';
 import lostImageFemale from '../../images/woman.jpg';
+import { CastList, Img, CastItem, ImgWraper, Text } from './CastDetails.styled';
+import { IMG_URL } from 'constants/Img_URL';
 
-export const CastDetails = () => {
+const CastDetails = () => {
   const { id } = useParams();
 
   const [movieCast, setMovieCast] = useState(null);
@@ -19,34 +21,38 @@ export const CastDetails = () => {
   }, [id]);
 
   return (
-    <div>
-      <ul>
+    <>
+      <CastList>
         {movieCast &&
           movieCast.map(
             ({ id, name, character, profile_path, original_name, gender }) => {
               return (
-                <li key={id}>
-                  <p>{name}</p>
-                  {character && <p>Character: {character}</p>}
+                <CastItem key={id}>
+                  <Text>
+                    <p>{name}</p>
+                    {character && <p>Character: {character}</p>}
+                  </Text>
 
-                  {profile_path ? (
-                    <img
-                      style={{ width: '120px' }}
-                      src={`https://image.tmdb.org/t/p/w500/${profile_path}`}
-                      alt={original_name}
-                    />
-                  ) : (
-                    <img
-                      style={{ width: '120px' }}
-                      src={gender === 2 ? lostImageMale : lostImageFemale}
-                      alt=""
-                    />
-                  )}
-                </li>
+                  <ImgWraper>
+                    {profile_path ? (
+                      <Img
+                        src={`${IMG_URL}${profile_path}`}
+                        alt={original_name}
+                      />
+                    ) : (
+                      <Img
+                        src={gender === 2 ? lostImageMale : lostImageFemale}
+                        alt=""
+                      />
+                    )}
+                  </ImgWraper>
+                </CastItem>
               );
             }
           )}
-      </ul>
-    </div>
+      </CastList>
+    </>
   );
 };
+
+export default CastDetails;

@@ -1,19 +1,32 @@
+import {
+  MovieTitle,
+  GenresList,
+  ListItem,
+  VoteText,
+  Overview,
+  Img,
+} from './MovieDescription.styled';
+import { Box } from '../Box/Box';
+import { IMG_URL } from 'constants/Img_URL';
+
 export const MovieDescription = ({ info }) => {
   return (
     <div>
-      <h2>{info.title}</h2>
-      <p>Vote average: {info.vote_average}</p>
-      <ul>
+      <MovieTitle>"{info.title}"</MovieTitle>
+      <VoteText>
+        <b>Vote average:</b> {info.vote_average}
+      </VoteText>
+      <GenresList>
+        <b>Genres:&nbsp;</b>
         {info.genres.map(genre => (
-          <li key={genre.name}>{genre.name}</li>
+          <ListItem key={genre.name}>{genre.name}</ListItem>
         ))}
-      </ul>
+      </GenresList>
 
-      <p>{info.overview}</p>
-      <img
-        src={`https://image.tmdb.org/t/p/w500/${info.poster_path}`}
-        alt={info.tagline}
-      />
+      <Box display="flex">
+        <Img src={`${IMG_URL}${info.poster_path}`} alt={info.tagline} />
+        <Overview>{info.overview}</Overview>
+      </Box>
     </div>
   );
 };

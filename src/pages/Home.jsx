@@ -1,8 +1,9 @@
 import { getTrendingMovie } from '../services/getTrendingMovie';
 import { useEffect, useState } from 'react';
 import { MoviesList } from '../components/MoviesList/Movies.List';
+import { Box } from 'components/Box/Box';
 
-export const Home = () => {
+const Home = () => {
   const [state, setState] = useState(null);
 
   useEffect(() => {
@@ -15,9 +16,14 @@ export const Home = () => {
   }, []);
 
   return (
-    <main>
-      <h1>Trending today</h1>
+    <Box as="main" pt="l">
+      <Box pl="l">
+        <h1>Trending today</h1>
+      </Box>
+
       {state && <MoviesList movies={state} />}
-    </main>
+    </Box>
   );
 };
+
+export default Home;

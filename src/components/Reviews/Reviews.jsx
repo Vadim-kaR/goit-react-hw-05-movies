@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getReviewById } from 'services/getReviewById';
-
-export const ReviewsDetails = () => {
+import { Item, AuthorName } from './Reviews.styled';
+const ReviewsDetails = () => {
   const [movieReview, setMovieReview] = useState(null);
   const { id } = useParams();
   useEffect(() => {
@@ -20,13 +20,13 @@ export const ReviewsDetails = () => {
         {movieReview && movieReview.length !== 0 ? (
           movieReview.map(({ author, id, content }) => {
             return (
-              <li key={id}>
-                <p>
-                  <span>Author: </span>
-                  {author}
-                </p>
+              <Item key={id}>
+                <AuthorName>
+                  <b>Author: </b>
+                  <b>{author}</b>
+                </AuthorName>
                 <p>{content}</p>
-              </li>
+              </Item>
             );
           })
         ) : (
@@ -36,3 +36,5 @@ export const ReviewsDetails = () => {
     </div>
   );
 };
+
+export default ReviewsDetails;

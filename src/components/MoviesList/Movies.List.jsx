@@ -1,19 +1,21 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { Box } from '../Box/Box';
+import { Link } from './MoviesList.styled';
 
 export const MoviesList = ({ movies }) => {
   const location = useLocation();
   return (
-    <div>
+    <Box mt="l" px="l">
       {movies.map(({ id, title }) => {
         return (
-          <div key={id}>
-            <NavLink to={`${id}`} state={{ from: location }}>
+          <Box p="s" key={id}>
+            <Link to={`${id}`} state={{ from: location }}>
               {title}
-            </NavLink>
+            </Link>
             ;
-          </div>
+          </Box>
         );
       })}
-    </div>
+    </Box>
   );
 };

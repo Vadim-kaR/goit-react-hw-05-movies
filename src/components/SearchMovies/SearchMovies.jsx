@@ -1,39 +1,31 @@
-import { Formik, Form, Field } from 'formik';
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { getMovieByName } from 'services/getMovieByName';
 import { MoviesList } from 'components/MoviesList/Movies.List';
+import { SearchBox } from 'components/SearchBox/SearchBox';
 
 export const SearchMovies = () => {
-  const [movieName, setMovieName] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
   const [movieResults, setMovieResults] = useState(null);
+  const requestMovie = searchParams.get('movie') ?? '';
 
-  const handleChange = e => {
-    const inputMovie = e.currentTarget.value;
-    setMovieName(inputMovie);
+  const onChange = name => {
+    setSearchParams(name !== '' ? { movie: name } : {});
   };
 
   const handleSubmit = async () => {
-    const { results } = await getMovieByName(movieName);
+    const { results } = await getMovieByName(requestMovie);
     setMovieResults(results);
   };
 
   return (
-    <div>
-      <Formik initialValues={{ name: '' }} onSubmit={handleSubmit}>
-        <Form>
-          <Field
-            onChange={handleChange}
-            value={movieName}
-            type="text"
-            name="name"
-            autoComplete="off"
-            autoFocus
-            placeholder="Search movie"
-          />
-          <button type="submit">Find</button>
-        </Form>
-      </Formik>
+    <>
+      <SearchBox
+        handleSubmit={handleSubmit}
+        onChange={onChange}
+        value={requestMovie}
+      />
       {movieResults && <MoviesList movies={movieResults} />}
-    </div>
+    </>
   );
 };

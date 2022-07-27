@@ -1,8 +1,12 @@
-import { Link } from 'react-router-dom';
+import { Box } from 'components/Box/Box';
+import { Link, Button, Icon } from './BackLink.styled';
 export const BackLink = ({ to }) => {
   return (
-    <div>
-      <Link to={to}>Back</Link>
-    </div>
+    <Box mb="l">
+      <Button>
+        <Icon />
+        <Link to={to}> Go back</Link>
+      </Button>
+    </Box>
   );
 };

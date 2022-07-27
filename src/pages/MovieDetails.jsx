@@ -2,16 +2,19 @@ import { useParams, useLocation, Outlet } from 'react-router-dom';
 import { getMovieById } from 'services/getMovieById';
 import { MovieDescription } from 'components/MovieDescription/MovieDescription';
 import { useEffect, useState } from 'react';
-import { NavigationLinks } from 'components/NavigationLinks/NovigationLinks';
+import { PageNavigationLinks } from 'components/PageNavigationLinks/PageNovigationLinks';
 import { BackLink } from 'components/BackLink/BackLink';
+import { Suspense } from 'react';
+import { Box } from 'components/Box/Box';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const [movieInfo, setMovieInfo] = useState(null);
+  // const [stateLocation, setStateLocation] = useState(null);
   const location = useLocation();
+
   const { id } = useParams();
 
   const backLinkHref = location.state?.from ?? '/';
-  console.log(location);
 
   useEffect(() => {
     const fetchedData = async () => {
@@ -23,11 +26,17 @@ export const MovieDetails = () => {
   }, [id]);
 
   return (
-    <div>
+    <Box p="l">
       <BackLink to={backLinkHref} />
       {movieInfo && <MovieDescription info={movieInfo} />}
-      <NavigationLinks />
-      <Outlet />
-    </div>
+      <Box pt="l" pb="l">
+        <PageNavigationLinks />
+      </Box>
+      <Suspense>
+        <Outlet />
+      </Suspense>
+    </Box>
   );
 };
+
+export default MovieDetails;

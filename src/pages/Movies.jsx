@@ -1,9 +1,11 @@
 import { SearchMovies } from 'components/SearchMovies/SearchMovies';
 
-export const Movies = () => {
+const Movies = () => {
   return (
-    <div>
+    <>
       <SearchMovies />
-    </div>
+    </>
   );
 };
+
+export default Movies;
