@@ -8,11 +8,8 @@ import { Box } from 'components/Box/Box';
 
 const MovieDetails = () => {
   const [movieInfo, setMovieInfo] = useState(null);
-  // const [stateLocation, setStateLocation] = useState(null);
   const location = useLocation();
-
   const { id } = useParams();
-
   const backLinkHref = location.state?.from ?? '/';
 
   useEffect(() => {
@@ -20,7 +17,6 @@ const MovieDetails = () => {
       const result = await getMovieById(id);
       setMovieInfo(result);
     };
-
     fetchedData();
   }, [id]);
 
