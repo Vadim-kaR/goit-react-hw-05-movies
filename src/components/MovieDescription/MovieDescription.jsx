@@ -7,14 +7,14 @@ import {
   Img,
 } from './MovieDescription.styled';
 import { Box } from '../Box/Box';
-import { IMG_URL } from 'constants/Img_URL';
+import { IMG_URL } from 'constants/constants';
 
 export const MovieDescription = ({ info }) => {
   return (
     <div>
       <MovieTitle>"{info.title}"</MovieTitle>
       <VoteText>
-        <b>Vote average:</b> {info.vote_average}
+        <b>User Score:</b> {Math.floor(info.vote_average * 10) + '%'}
       </VoteText>
       <GenresList>
         <b>Genres:&nbsp;</b>

@@ -5,17 +5,13 @@ import { HiChevronDoubleLeft } from 'react-icons/hi';
 export const Link = styled(NavLink)`
   text-decoration: none;
   color: ${p => p.theme.colors.text};
-  &:hover {
-    color: ${p => p.theme.colors.accentText};
-  }
-`;
-
-export const Button = styled.button`
   padding: 5px;
   cursor: pointer;
   background-color: inherit;
   border: none;
   font-size: ${p => p.theme.fontSizes.m};
+  font-weight: 500;
+
   &:hover {
     color: ${p => p.theme.colors.accentText};
   }

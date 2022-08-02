@@ -1,8 +1,8 @@
 import { useParams, useLocation, Outlet } from 'react-router-dom';
-import { getMovieById } from 'services/getMovieById';
+import { getMovieById } from 'services/API';
 import { MovieDescription } from 'components/MovieDescription/MovieDescription';
 import { useEffect, useState } from 'react';
-import { PageNavigationLinks } from 'components/PageNavigationLinks/PageNovigationLinks';
+import { MovieDetailLinks } from 'components/MovieDetailLinks/MovieDetailLinks';
 import { BackLink } from 'components/BackLink/BackLink';
 import { Box } from 'components/Box/Box';
 
@@ -25,7 +25,7 @@ const MovieDetails = () => {
       <BackLink to={backLinkHref} />
       {movieInfo && <MovieDescription info={movieInfo} />}
       <Box pt="l" pb="l">
-        <PageNavigationLinks />
+        <MovieDetailLinks to={backLinkHref} />
       </Box>
       <Outlet />
     </Box>

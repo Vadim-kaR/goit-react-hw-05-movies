@@ -1,16 +1,19 @@
 import { Formik } from 'formik';
 import { Input, InputForm, Button } from './SearchBox.styled';
 import { HiOutlineSearch } from 'react-icons/hi';
-export const SearchBox = ({ handleSubmit, onChange, value }) => {
+
+export const SearchForm = ({ onSubmit }) => {
+  const handleSubmit = ({ movieName }) => {
+    onSubmit(movieName);
+  };
+
   return (
-    <div>
-      <Formik initialValues={{ name: '' }} onSubmit={() => handleSubmit()}>
+    <>
+      <Formik initialValues={{ movieName: '' }} onSubmit={handleSubmit}>
         <InputForm>
           <Input
-            onChange={e => onChange(e.target.value)}
-            value={value}
             type="text"
-            name="name"
+            name="movieName"
             autoComplete="off"
             autoFocus
             placeholder="Search a movie"
@@ -20,6 +23,6 @@ export const SearchBox = ({ handleSubmit, onChange, value }) => {
           </Button>
         </InputForm>
       </Formik>
-    </div>
+    </>
   );
 };

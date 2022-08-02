@@ -5,10 +5,10 @@ import { Link } from './MoviesList.styled';
 export const MoviesList = ({ movies }) => {
   const location = useLocation();
   return (
-    <Box mt="l" px="l">
+    <Box mt="l" px="l" as="ul">
       {movies.map(({ id, title }) => {
         return (
-          <Box p="s" key={id}>
+          <Box p="s" as="li" key={id}>
             <Link to={`/movies/${id}`} state={{ from: location }}>
               {title}
             </Link>
