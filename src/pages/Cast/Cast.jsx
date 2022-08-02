@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getCastById } from 'services/API';
 import { useParams } from 'react-router-dom';
-import { CastDetailsList } from 'components/CastDetailsList';
+import { CastDetailList } from 'components/CastDetailList';
 
 const Cast = () => {
   const { id } = useParams();
@@ -19,7 +19,7 @@ const Cast = () => {
 
   return (
     <>
-      <CastDetailsList actors={movieCast} />
+      <CastDetailList actors={movieCast} />
     </>
   );
 };

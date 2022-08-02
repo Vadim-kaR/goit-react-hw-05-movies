@@ -4,12 +4,12 @@ import {
   Text,
   CastList,
   Img,
-} from './CastDetailsList.styled';
+} from './CastDetailList.styled';
 import { IMG_URL } from 'constants/constants';
 import lostImageMale from '../../images/male.jpeg';
 import lostImageFemale from '../../images/woman.jpg';
 
-export const CastDetailsList = ({ actors }) => {
+export const CastDetailList = ({ actors }) => {
   return (
     <>
       <CastList>
