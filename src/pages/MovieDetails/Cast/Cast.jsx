@@ -17,11 +17,7 @@ const Cast = () => {
     castFetch();
   }, [id]);
 
-  return (
-    <>
-      <CastDetailList actors={movieCast} />
-    </>
-  );
+  return <CastDetailList actors={movieCast} />;
 };
 
 export default Cast;
