@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { getMovieByName } from 'services/API';
+import { getMovieByName } from 'services/getMovieByName';
 import { MoviesList } from 'components/MoviesList';
 import { SearchForm } from 'components/SearchForm/SearchForm';
 
@@ -24,7 +24,7 @@ const Movies = () => {
 
   return (
     <>
-      <SearchForm onSubmit={onSumbmit} />
+      <SearchForm onSubmit={onSumbmit} value={requestMovie} />
       {movieResults && <MoviesList movies={movieResults} />}
     </>
   );

@@ -1,4 +1,4 @@
-import { getTrendingMovie } from '../services/API';
+import { getTrendingMovie } from '../services/getTrendingMovie';
 import { useEffect, useState } from 'react';
 import { MoviesList } from '../components/MoviesList';
 import { Box } from 'components/Box/Box';

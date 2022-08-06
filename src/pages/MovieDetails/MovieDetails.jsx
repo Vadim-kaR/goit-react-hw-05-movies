@@ -1,10 +1,11 @@
 import { useParams, useLocation, Outlet } from 'react-router-dom';
-import { getMovieById } from 'services/API';
+import { getMovieById } from 'services/getMovieById';
 import { MovieDescription } from 'components/MovieDescription/MovieDescription';
 import { useEffect, useState } from 'react';
 import { MovieDetailLinks } from 'components/MovieDetailLinks/MovieDetailLinks';
 import { BackLink } from 'components/BackLink/BackLink';
 import { Box } from 'components/Box/Box';
+import { Suspense } from 'react';
 
 const MovieDetails = () => {
   const [movieInfo, setMovieInfo] = useState(null);
@@ -27,7 +28,9 @@ const MovieDetails = () => {
       <Box pt="l" pb="l">
         <MovieDetailLinks to={backLinkHref} />
       </Box>
-      <Outlet />
+      <Suspense fallback={null}>
+        <Outlet />
+      </Suspense>
     </Box>
   );
 };

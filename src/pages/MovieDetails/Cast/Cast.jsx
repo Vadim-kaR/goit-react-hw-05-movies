@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getCastById } from 'services/API';
+import { getCastById } from 'services/getCastById';
 import { useParams } from 'react-router-dom';
 import { CastDetailList } from 'components/CastDetailList';
 

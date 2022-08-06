@@ -1,5 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Home = lazy(() => import('./pages/Home'));
 const Movies = lazy(() => import('./pages/Movies/Movies'));
@@ -12,7 +14,7 @@ const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
 export const App = () => {
   return (
     <>
-      <Suspense>
+      <Suspense fallback={null}>
         <Routes>
           <Route path="/" element={<SharedLayout />}>
             <Route index element={<Home />} />
@@ -24,6 +26,7 @@ export const App = () => {
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
+        <ToastContainer autoClose={5000} />
       </Suspense>
     </>
   );
